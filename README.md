@@ -8,7 +8,7 @@
 
 
 
-Then resolve dependencies using bundler:
+Resolve dependencies using bundler:
 
 ```
 bundle install
