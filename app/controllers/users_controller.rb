@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :about, :avatar, :cover,
-                                 :sex, :dob, :location, :phone_number)
+                                 :sex, :dob, :location, :phone_number, :subdomain)
   end
 
   def check_ownership

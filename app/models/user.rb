@@ -9,7 +9,7 @@ has_many :levels
 
 def create_tenant
   #Apartment::Tenant.create(subdomain)
-  Apartment::Tenant.create('subdomain') 
+  Apartment::Tenant.create(subdomain) 
 end
 
 def change_points(options)
