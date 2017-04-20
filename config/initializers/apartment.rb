@@ -90,3 +90,4 @@ end
 # Rails.application.config.middleware.use 'Apartment::Elevators::Domain'
 Rails.application.config.middleware.use 'Apartment::Elevators::Subdomain'
 # Rails.application.config.middleware.use 'Apartment::Elevators::FirstSubdomain'
+Apartment::Elevators::FirstSubdomain.excluded_subdomains = ['sennovakuberastaging']
