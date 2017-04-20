@@ -58,6 +58,7 @@ gem 'populator'
 gem 'auto_html', '~>1.6.4'
 gem 'sanitize'
 gem 'gioco'
+gem 'apartment', '~>1.2.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

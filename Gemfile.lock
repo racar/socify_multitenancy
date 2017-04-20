@@ -46,6 +46,9 @@ GEM
     after_commit_action (1.0.1)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
+    apartment (1.2.0)
+      activerecord (>= 3.1.2, < 6.0)
+      rack (>= 1.3.6)
     arel (7.1.1)
     auto_html (1.6.4)
       redcarpet (~> 3.1)
@@ -397,6 +400,7 @@ DEPENDENCIES
   acts_as_commentable
   acts_as_follower
   acts_as_votable (~> 0.10.0)
+  apartment (~> 1.2.0)
   auto_html (~> 1.6.4)
   autoprefixer-rails
   better_errors
@@ -433,4 +437,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.14.3
+   1.14.6

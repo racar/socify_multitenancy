@@ -25,6 +25,7 @@ namespace :fill do
       user.confirmed_at = DateTime.now
       user.sign_in_count = 0
       user.posts_count = 0
+      user.subdomain = Faker::Space.planet
       puts "created user #{user.name}"
     end
 
