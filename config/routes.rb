@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
-  
+
   ActiveAdmin.routes(self)
   resources :posts
   resources :comments, only: [:create, :destroy]
-  devise_for :users
+  #devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   resources :users do
     member do
       get :friends
