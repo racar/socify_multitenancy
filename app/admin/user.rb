@@ -16,4 +16,40 @@ permit_params :name,:email,:encrypted_password,:about,:avatar,:cover,:reset_pass
 #   permitted
 # end
 
+controller do
+
+    def new
+      @user = User.new
+
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @user }
+      end
+    end
+
+    def create
+      byebug
+      @user = User.new(user_params)
+      respond_to do |format|
+        generated_password = Devise.friendly_token.first(8)
+        @user.password = generated_password
+
+        if @user.save
+          NotifyMailer.new_user_account(@user,generated_password).deliver
+          format.html { redirect_to admin_users_path, notice: 'User was successfully created.' }
+          format.json { render json: @user, status: :created, location: @user }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+
+    private
+    def user_params
+      params.require(:user).permit(:subdomain,:name, :email, :password, :password_salt, :logo, profile_attributes: [:identification,:cod_cost_centre,:name_cost_centre,:leader,:job_title])
+    end
+
+  end
+
 end
