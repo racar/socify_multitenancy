@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   ActiveAdmin.routes(self)
+  post '/admin/user/upload' => 'admin/users#upload'
   resources :posts
   resources :comments, only: [:create, :destroy]
   #devise_for :users

@@ -3,15 +3,15 @@
 # under GNU GPL v2 or later. See the LICENSE.
 
 class User < ActiveRecord::Base
-after_create :create_tenant
+#after_create :create_tenant
 has_many :badges , :through => :levels
 has_many :levels
 devise :omniauthable
 
-def create_tenant
+#def create_tenant
   #Apartment::Tenant.create(subdomain)
-  Apartment::Tenant.create(subdomain)
-end
+#  Apartment::Tenant.create(subdomain)
+#end
 
 def change_points(options)
   if Gioco::Core::KINDS

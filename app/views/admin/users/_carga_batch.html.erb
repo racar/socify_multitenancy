@@ -1,0 +1,14 @@
+
+
+<%= form_tag({action: :upload}, multipart: true) do %>
+        <%= file_field_tag 'users_file' %>
+
+<br/>
+
+      <%= submit_tag 'Cargar' do %>
+
+      <% end %>
+
+
+
+    <% end %>

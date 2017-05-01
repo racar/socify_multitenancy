@@ -16,25 +16,108 @@ permit_params :name,:email,:encrypted_password,:about,:avatar,:cover,:reset_pass
 #   permitted
 # end
 
+index do
+    selectable_column
+    id_column
+    column :name
+    column :email
+
+    column "" do |a|
+          links = ''.html_safe
+          links += link_to(t("View"), admin_user_path(a.id),:class => "member_link view_link")
+          links += link_to(t("Edit"), user_edit_admin_users_path(a.id),:class => "member_link edit_link")
+          links += link_to(t("Delete"), admin_user_path(a.id), :method => :delete, :confirm => I18n.t('active_admin.delete_confirmation'),:class => "member_link delete_link")
+          links
+        end
+
+end
+
+
+sidebar :carga_batch, partial: 'carga_batch', only: :index # app/views/admin/user/_carga_batch.html.erb
+
+
+
+filter :name
+filter :email
+
+############################ collection action
+collection_action :user_edit , :method => :get do
+    @user = User.find(params[:format])
+    render "admin/users/user_edit"
+  end
+
+  collection_action :user_update, :method => :post do
+    @user = User.find(params[:format])
+    if params[:user][:password].blank?
+     @user.update_without_password(params[:user])
+    else
+     @user.update_attributes(params[:user])
+    end
+    if @user.errors.blank?
+     redirect_to admin_users_path, :notice => "Usuario actializado satisfactoriamente."
+    else
+     render :user_edit
+    end
+  end
+#################
+
 controller do
 
     def new
       @user = User.new
-
+byebug
       respond_to do |format|
         format.html # new.html.erb
         format.json { render json: @user }
+
       end
     end
 
+    def upload
+
+      uploaded_io = params[:users_file]
+
+        File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+          file.write(uploaded_io.read)
+        end
+
+        require 'spreadsheet'
+
+
+            book = Spreadsheet.open Rails.root.join('public', 'uploads', uploaded_io.original_filename)
+            sheet1 = book.worksheet 0
+
+
+            sheet1.each 1 do |row|
+              unless row[0].blank?
+
+              generated_password = Devise.friendly_token.first(8)
+
+              @user = User.new(:email => row[1], :name => row[0],
+                 :password => generated_password,
+                 :password_confirmation => generated_password)
+              byebug
+              @user.save
+              end
+            end
+
+respond_to do |format|
+          format.html { redirect_to admin_users_path, notice: 'Usuarios cargados desde archivo con éxito.' }
+end
+
+
+    end
+
     def create
-      byebug
+
       @user = User.new(user_params)
       respond_to do |format|
+
         generated_password = Devise.friendly_token.first(8)
         @user.password = generated_password
-
+byebug
         if @user.save
+
           NotifyMailer.new_user_account(@user,generated_password).deliver
           format.html { redirect_to admin_users_path, notice: 'User was successfully created.' }
           format.json { render json: @user, status: :created, location: @user }

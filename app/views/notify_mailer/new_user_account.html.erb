@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hola <%= @name%>,</p>
+    <p>Te ha sido creada una cuenta en Opensky, para acceder debes ir al siguiente <a href="http://calidadopensky.herokuapp.com/">enlace</a> e ingresar con los datos que se encuentran a continuaci&oacute;n:</p>
+    <p>
+      <table>
+        <tr>
+          <th>Usuario</th><th>Clave</th>
+        </tr>
+        <tr>
+          <td><%= @email %></td><td><%= @pass %></td>
+        </tr>
+      </table>
+    </p>
+    <p>Saludos<br>
+  Opensky</p>
+  </body>
+</html>

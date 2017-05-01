@@ -64,6 +64,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'inherited_resources', '~> 1.7'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'spreadsheet', "0.9.4"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
