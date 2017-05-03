@@ -1,8 +1,10 @@
 class TenantsController < InheritedResources::Base
- layout 'global'
+ layout 'landing'
   private
 
     def tenant_params
       params.require(:tenant).permit(:domain, :owner)
     end
+
+  
 end

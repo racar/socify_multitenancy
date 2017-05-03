@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <!-- /.website title -->
+        <title>Sennova Kubera</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <%= stylesheet_link_tag    'applicationl', media: 'all' %>
+        <%= javascript_include_tag 'application' %>
+        <%= csrf_meta_tags %>
+
+
+
+
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" />
+
+    </head>
+
+    <body data-spy="scroll" data-target="#navbar-scroll">
+
+        <!-- /.preloader -->
+        <div id="preloader"></div>
+        <div id="top"></div>
+            <%= yield %>
+        <!-- /.footer -->
+        <footer id="footer">
+            <div class="container">
+                <div class="col-sm-4 col-sm-offset-4">
+                    <!-- /.social links -->
+                    <div class="social text-center">
+                        <ul>
+                            <li><a class="wow fadeInUp" href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                            <li><a class="wow fadeInUp" href="https://www.facebook.com/" data-wow-delay="0.2s"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="wow fadeInUp" href="https://plus.google.com/" data-wow-delay="0.4s"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a class="wow fadeInUp" href="https://instagram.com/" data-wow-delay="0.6s"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="text-center wow fadeInUp" style="font-size: 14px;">Copyright OpenSky 2017</div>
+                    <a href="#" class="scrollToTop"><i class="pe-7s-up-arrow pe-va"></i></a>
+                </div>
+            </div>
+        </footer>
+
+
+        <script>
+                                    new WOW().init();
+        </script>
+    </body>
+</html>
