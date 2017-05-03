@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Domain:</strong>
-  <%= @tenant.domain %>
+  Su plataforma kubera está lista para utilizarce en la siguiente dirección:
+  <% urlt = @tenant.domain + '.senovakubera.life'  %>
+  <%=link_to urlt,urlt%>
 </p>
 
 <p>
