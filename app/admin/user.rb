@@ -65,7 +65,7 @@ controller do
 
     def new
       @user = User.new
-byebug
+
       respond_to do |format|
         format.html # new.html.erb
         format.json { render json: @user }
@@ -96,7 +96,7 @@ byebug
               @user = User.new(:email => row[1], :name => row[0],
                  :password => generated_password,
                  :password_confirmation => generated_password)
-              byebug
+
               @user.save
               end
             end
@@ -115,7 +115,7 @@ end
 
         generated_password = Devise.friendly_token.first(8)
         @user.password = generated_password
-byebug
+
         if @user.save
 
           NotifyMailer.new_user_account(@user,generated_password).deliver
