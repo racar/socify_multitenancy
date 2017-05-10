@@ -186,3 +186,33 @@ p {
 .atwho-view .cur {
   background: $navbar-color;
 }
+
+
+///////////////////preview
+
+#url {
+		    border: 1px solid #CCCCCC;
+		    border-radius: 5px;
+		    color: #696969;
+		    left: 50%;
+		    margin-left: -200px;
+		    padding: 10px;
+		    position: relative;
+		    width: 400px;
+		}
+
+
+		#html {
+		    left: 50%;
+		    margin-left: -250px;
+		    position: absolute;
+		    top: 100px;
+		}
+
+	
+
+		#loader{
+			display: block;
+		    margin-left: 49%;
+		    margin-top: 18px;
+		}
