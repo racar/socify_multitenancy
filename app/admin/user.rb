@@ -40,6 +40,18 @@ sidebar :carga_batch, partial: 'carga_batch', only: :index # app/views/admin/use
 filter :name
 filter :email
 
+#############################
+form :html => { :multipart=>true } do |f|
+  	f.inputs 'Nuevo Usuario'  do
+        f.input :name
+    		f.input :email
+        f.input :cargo
+    		
+  	end
+
+  	f.actions
+	end
+
 ############################ collection action
 collection_action :user_edit , :method => :get do
     @user = User.find(params[:format])
