@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
   def show
     @comments = @post.comments.all
-    byebug
+
   end
 
   def create
@@ -43,5 +43,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:content, :attachment)
+  end
+
+  def share
+    
   end
 end

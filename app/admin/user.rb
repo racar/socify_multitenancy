@@ -46,7 +46,7 @@ form :html => { :multipart=>true } do |f|
         f.input :name
     		f.input :email
         f.input :cargo
-    		
+
   	end
 
   	f.actions
@@ -129,6 +129,7 @@ end
         @user.password = generated_password
 
         if @user.save
+          #http://sennovakuberastaging.herokuapp.com/users/confirmation?confirmation_token=tqTHcU2ogMs8mmGH4Rbk
 
           NotifyMailer.new_user_account(@user,generated_password).deliver
           format.html { redirect_to admin_users_path, notice: 'User was successfully created.' }
