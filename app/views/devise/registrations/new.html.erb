@@ -22,7 +22,7 @@
         <%= f.label 'Subdominio' %>
         <%= f.text_field :subdomain, class: 'form-control', placeholder: 'Subdominio', :value => Apartment::Tenant.current, :disabled => true,:id =>'domain' %>
       </div>
-      <%= f.input :account_enabled, as => :hidden %>
+      <%= f.hidden_field :account_enabled, :value => false  %>
 
       <div class="form-group">
         <%= f.label :password %>
@@ -50,7 +50,7 @@
     var sec_part = email.substring(email.lastIndexOf("@")+1);
     var domainSecLevel = sec_part.substring(sec_part.indexOf(".")+1);
     var isSec = domainSecLevel.indexOf(".");
-    alert ("LEvel:"+isSec);
+
     var domain_email
     if(isSec === -1){
       domain_email = email.substring(email.lastIndexOf("@")+1,email.lastIndexOf("."));
@@ -61,10 +61,10 @@
     }
     var domain = $('#domain').val();
     if(domain_email !== domain){
-      document.getElementById("account_enabled").value = false;
-      alert("El correo no corresponde a su dominio, antes de habilitar el ingreso su cuenta debe ser habilitada por el administrador");
+      document.getElementById("user_account_enabled").value = false;
+      alert("El correo no corresponde a su dominio, su cuenta será creada pero debe contactar al administrador del sistema para que habilite el ingreso.");
     }else{
-      document.getElementById("account_enabled").value = true;
+      document.getElementById("user_account_enabled").value = true;
     }
   });
 

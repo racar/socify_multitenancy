@@ -75,6 +75,13 @@ def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
    end
 end
 
+def active_for_authentication?
+       # Uncomment the below debug statement to view the properties of the returned self model values.
+        logger.debug self.to_yaml
+
+       super && account_enabled?
+     end
+
 
 
   # Include default devise modules. Others available are:

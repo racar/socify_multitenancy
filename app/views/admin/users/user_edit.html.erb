@@ -1,0 +1,23 @@
+<%= form_for :user, :url => user_update_admin_users_path(params[:format]),:html=>{:multipart=>true} do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cargo %><br />
+    <%= f.text_field :cargo, :class =>"field_x" %>
+  </div>
+  <div class="field">
+    <%= f.label :account_enabled %><br />
+    <%= f.check_box :account_enabled, :class =>"field_x" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

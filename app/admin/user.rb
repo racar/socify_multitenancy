@@ -61,9 +61,9 @@ collection_action :user_edit , :method => :get do
   collection_action :user_update, :method => :post do
     @user = User.find(params[:format])
     if params[:user][:password].blank?
-     @user.update_without_password(params[:user])
+     @user.update_without_password(user_params)
     else
-     @user.update_attributes(params[:user])
+     @user.update_attributes(user_params)
     end
     if @user.errors.blank?
      redirect_to admin_users_path, :notice => "Usuario actializado satisfactoriamente."
@@ -143,7 +143,7 @@ end
 
     private
     def user_params
-      params.require(:user).permit(:subdomain,:name, :email, :password, :password_salt, :logo, profile_attributes: [:identification,:cod_cost_centre,:name_cost_centre,:leader,:job_title])
+      params.require(:user).permit(:account_enabled,:cargo,:name, :email)
     end
 
   end
