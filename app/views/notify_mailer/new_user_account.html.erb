@@ -5,7 +5,16 @@
   </head>
   <body>
     <p>Hola <%= @name%>,</p>
-    <p>Te ha sido creada una cuenta en Opensky, para acceder debes ir al siguiente <a href="http://calidadopensky.herokuapp.com/">enlace</a> e ingresar con los datos que se encuentran a continuaci&oacute;n:</p>
+    <%
+    tenant = Apartment::Tenant.current
+    url ='http://'
+
+    if(tenant != 'public')
+      url = tenant+'.'
+    end
+    url = url + 'sennovakubera.life'
+    %>
+    <p>Te ha sido creada una cuenta en Sennova Kubera, para acceder debes ir al siguiente <%= link_to 'enlace', url %> e ingresar con los datos que se encuentran a continuaci&oacute;n:</p>
     <p>
       <table>
         <tr>
