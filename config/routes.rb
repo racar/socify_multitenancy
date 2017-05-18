@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
   unauthenticated :user do
     root 'home#front'
+  #  root 'tenants#new'
   end
 
   match :follow, to: 'follows#create', as: :follow, via: :post

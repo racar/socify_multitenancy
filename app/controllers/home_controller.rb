@@ -7,12 +7,20 @@ class HomeController < ApplicationController
   respond_to :html, :js
 
   def index
+  
+  if  (Apartment::Tenant.current == 'public')
+    redirect_to controller: 'tenants', action: 'new'
+  end
+
     @post = Post.new
     @friends = @user.all_following.unshift(@user)
     @activities = PublicActivity::Activity.where(owner_id: @friends).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
   end
 
   def front
+    if  (Apartment::Tenant.current == 'public')
+      redirect_to controller: 'tenants', action: 'new'
+    end
     @activities = PublicActivity::Activity.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
   end
 
@@ -25,4 +33,5 @@ class HomeController < ApplicationController
   def set_user
     @user = current_user
   end
+
 end
