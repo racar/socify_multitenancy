@@ -2,17 +2,25 @@ class TenantsController < InheritedResources::Base
  layout 'landing'
 
  def create
-   params[:domain]
-   #begin
-    # byebug
-   Tenant.create
-    #byebug
-   AdminUser.create!(email: 'racar@example.com', password: 'password', password_confirmation: 'password')
-   #rescue => e
+
+   begin
+
+    @tenant = Tenant.new(tenant_params)
+    if @tenant.save
+      @algo = Apartment::Tenant.current
+      Apartment::Tenant.switch!(@tenant.domain)
+      AdminUser.create!(email: @tenant.owner, password: 'password', password_confirmation: 'password')
+
+      redirect_to @tenant
+    else
+      render "new"
+    end
+
+   rescue => e
      #byebug
-    # flash[:notice] = "El dominio ingresado ya existe"
-    # redirect_to :controller => 'tenants', :action => 'new'
-   #end
+     flash[:notice] = "El dominio ingresado ya existe"
+     redirect_to :controller => 'tenants', :action => 'new'
+   end
 
  end
 
