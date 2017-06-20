@@ -6,7 +6,7 @@ ActiveAdmin.setup do |config|
   #
   config.site_title = "SennovaKubera"
 
-  
+
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -32,7 +32,7 @@ ActiveAdmin.setup do |config|
   # will namespace routes to /hello_world/*
   #
   # To set no namespace by default, use:
-  #   config.default_namespace = false
+  #  config.default_namespace = false
   #
   # Default:
   # config.default_namespace = :admin
@@ -44,6 +44,20 @@ ActiveAdmin.setup do |config|
   #   config.namespace :admin do |admin|
   #     admin.site_title = "Custom Admin Title"
   #   end
+
+    config.load_paths = [File.expand_path('app/admin', Rails.root), File.expand_path('app/superad', Rails.root)]
+
+
+    config.namespace :superad do |superad|
+      superad.site_title = "Super Administrador SENNOVA KUBERA"
+
+
+
+
+    end
+
+
+
   #
   # This will ONLY change the title for the admin section. Other
   # namespaces will continue to use the main "site_title" configuration.
