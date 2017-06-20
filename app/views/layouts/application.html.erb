@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OpenSky</title>
+    <title>Sennova Kubera</title>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
@@ -21,6 +21,9 @@
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       </div>
     <% end %>
+    <%flash.each do |name, msg|%>
+<%= content_tag :div, msg, :id => "flash_#{name}"%>
+<%end%>
     <div class="container">
       <%= yield %>
     </div>
