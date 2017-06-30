@@ -8,12 +8,19 @@ class PostsController < ApplicationController
 
   def show
     @comments = @post.comments.all
-
+    byebug
   end
 
   def create
     @post = current_user.posts.new(post_params)
+    byebug
+    @privado = params[:privacity]
+    if @privado === '1' then
+      @post.privacity = 'P'
+    end
+
     if @post.save
+
       redirect_to root_path
     else
       redirect_to root_path, notice: @post.errors.full_messages.first
@@ -24,6 +31,12 @@ class PostsController < ApplicationController
   end
 
   def update
+    @privado = params[:privacity]
+    if @privado === '1' then
+      @post.privacity = 'P'
+    else
+      @post.privacity = 'F'  
+    end
     @post.update(post_params)
     redirect_to @post
   end
@@ -46,6 +59,6 @@ class PostsController < ApplicationController
   end
 
   def share
-    
+
   end
 end
