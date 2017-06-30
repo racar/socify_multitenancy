@@ -8,12 +8,12 @@ class PostsController < ApplicationController
 
   def show
     @comments = @post.comments.all
-    byebug
+    
   end
 
   def create
     @post = current_user.posts.new(post_params)
-    byebug
+
     @privado = params[:privacity]
     if @privado === '1' then
       @post.privacity = 'P'
@@ -35,7 +35,7 @@ class PostsController < ApplicationController
     if @privado === '1' then
       @post.privacity = 'P'
     else
-      @post.privacity = 'F'  
+      @post.privacity = 'F'
     end
     @post.update(post_params)
     redirect_to @post

@@ -7,6 +7,7 @@ class FollowsController < ApplicationController
   respond_to :js
 
   def create
+    
     @user = User.find(params[:user_id])
     current_user.follow(@user)
   end

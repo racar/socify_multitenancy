@@ -15,14 +15,14 @@ class HomeController < ApplicationController
     @post = Post.new
     @friends = @user.all_following.unshift(@user)
     @activities = PublicActivity::Activity.where(owner_id: @friends).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
-    byebug
+
   end
 
   def front
     if  (Apartment::Tenant.current == 'public')
       redirect_to controller: 'tenants', action: 'new'
     end
-    byebug
+    
     @posts = Post.where(privacity: 'P')
     @activities = PublicActivity::Activity.where(trackable_id: @posts).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
   end
