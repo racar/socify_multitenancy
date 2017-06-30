@@ -1,0 +1,11 @@
+Este es su primer login a la plataforma, por seguridad debe cambiar su contraseña:
+<%= form_for current_user, url: passwords_path do |f| %>
+  Password actual:<br />
+  <%= f.password_field :current_password %><br />
+  Nuevo password:<br />
+  <%= f.password_field :password %><br />
+  Confirme el nuevo password:<br />
+  <%= f.password_field :password_confirmation %><br />
+  <br />
+  <%= f.submit %>
+<% end %>

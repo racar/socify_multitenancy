@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :tenants
   devise_for :admin_users, ActiveAdmin::Devise.config
 
+  resource :passwords
+
   ActiveAdmin.routes(self)
   post '/admin/user/upload' => 'admin/users#upload'
   resources :posts
