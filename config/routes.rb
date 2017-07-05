@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :groups
   resources :tenants
   devise_for :admin_users, ActiveAdmin::Devise.config
 
@@ -34,6 +35,7 @@ Rails.application.routes.draw do
   match :like, to: 'likes#create', as: :like, via: :post
   match :unlike, to: 'likes#destroy', as: :unlike, via: :post
   match :find_friends, to: 'home#find_friends', as: :find_friends, via: :get
+  match :find_groups, to: 'home#find_groups', as: :find_groups, via: :get
   match :about, to: 'home#about', as: :about, via: :get
 
   # The priority is based upon order of creation: first created -> highest priority.
